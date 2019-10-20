@@ -13,7 +13,7 @@ export default class AuthenticationComponent extends Component {
             <NavLink
               className="tab-item"
               to="/auth/login"
-              activeClassName="active active-top-left"
+              activeClassName="active"
               isActive={match => {
                 return match || path === "/auth";
               }}
@@ -23,7 +23,7 @@ export default class AuthenticationComponent extends Component {
             <NavLink
               className="tab-item"
               to="/auth/signup"
-              activeClassName="active active-top-right"
+              activeClassName="active"
             >
               register now
             </NavLink>

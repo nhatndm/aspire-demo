@@ -15,6 +15,9 @@
     .switch-tab {
       height: 50px;
       display: flex;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      overflow: hidden;
 
       > .tab-item {
         display: flex;
@@ -30,14 +33,6 @@
         &.active {
           background-color: var(--app-white);
           color: var(--app-strong-cyan);
-
-          &.active-top-right {
-            border-top-right-radius: 4px;
-          }
-
-          &.active-top-left {
-            border-top-left-radius: 4px;
-          }
         }
 
         &:hover {
