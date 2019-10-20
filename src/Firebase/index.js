@@ -36,3 +36,7 @@ export async function loginWithEmailPassword({ email, password }) {
     return alert("Please do that again");
   }
 }
+
+export async function verifyIdToken(idToken) {
+  firebaseApp.auth().ve;
+}

@@ -2,6 +2,8 @@ import { init } from "@rematch/core";
 import { createBrowserHistory } from "history";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import app from "firebase/app";
+import * as admin from "firebase-admin";
+import key from "../key/key.json";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -12,8 +14,14 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
+const adminConfig = {
+  credential: admin.credential.cert(key),
+  databaseURL: "https://loan-project-256215.firebaseio.com"
+};
+
 const historyIns = createBrowserHistory();
 const firebaseIns = app.initializeApp(config);
+const firebaseAdminIns = admin.initializeApp(adminConfig);
 
 const storeIns = init({
   models: {},
@@ -32,3 +40,4 @@ const storeIns = init({
 export const store = storeIns;
 export const history = historyIns;
 export const firebaseApp = firebaseIns;
+export const firebaseAdmin = firebaseAdminIns;
