@@ -20,15 +20,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: var(--app-strong-cyan);
+        color: var(--app-white);
         flex: 1;
         text-transform: uppercase;
         font-weight: 500;
         text-decoration: none;
+        background-color: var(--app-strong-cyan);
 
         &.active {
-          background-color: var(--app-strong-cyan);
-          color: var(--app-white);
+          background-color: var(--app-white);
+          color: var(--app-strong-cyan);
 
           &.active-top-right {
             border-top-right-radius: 4px;
