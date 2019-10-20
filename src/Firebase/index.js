@@ -1,5 +1,6 @@
 import { store, firebaseApp } from "../Redux";
 import { push } from "connected-react-router";
+import axios from "axios";
 import "firebase/auth";
 
 export async function createUserWithEmailPassword({ email, password }) {
@@ -17,7 +18,7 @@ export async function loginWithEmailPassword({ email, password }) {
   try {
     await firebaseApp.auth().signInWithEmailAndPassword(email, password);
     const authUser = await firebaseApp.auth().currentUser;
-    const idToken = await authUser.getIdToken(true);
+    const idToken = await authUser.getIdToken();
 
     localStorage.setItem(
       "authuser",
@@ -36,11 +37,30 @@ export async function loginWithEmailPassword({ email, password }) {
   }
 }
 
-const fakeApiCall = () =>
-  new Promise(resolve =>
-    setTimeout(() => resolve({ isAuthenticated: false }), 5000)
-  );
-
 export async function verifyIdToken() {
-  return await fakeApiCall();
+  const authuser = JSON.parse(localStorage.getItem("authuser"));
+
+  if (!authuser || Object.keys(authuser).length === 0 || !authuser.idToken) {
+    return {
+      isAuthenticated: false
+    };
+  }
+
+  const data = await axios({
+    url: `${process.env.REACT_APP_BACKEND_API}/auth/verify`,
+    method: "GET",
+    headers: {
+      "id-token": authuser.idToken
+    }
+  });
+
+  if (data.status === "401") {
+    return {
+      isAuthenticated: false
+    };
+  }
+
+  return {
+    isAuthenticated: true
+  };
 }
