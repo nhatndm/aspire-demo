@@ -5,11 +5,14 @@
   "dependencies": {
     "@rematch/core": "^1.2.0",
     "axios": "^0.19.0",
+    "connected-react-router": "^6.5.2",
     "firebase": "^7.2.1",
+    "history": "^4.10.1",
     "lodash": "^4.17.15",
     "node-sass": "^4.12.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
   },
