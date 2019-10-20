@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import InputGroup from "../../InputGroup";
 import Button from "../../Button";
 
-export default class Login extends Component {
+export default class signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ export default class Login extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <div className="login-component">
+      <div className="signup-component">
         <InputGroup
           label="Email"
           value={email}
@@ -35,7 +35,7 @@ export default class Login extends Component {
           handleChange={this.handleChangeValue("password")}
         />
 
-        <Button title="Sign In" onClick={this.handleClick} />
+        <Button title="Sign Up" onClick={this.handleClick} />
       </div>
     );
   }

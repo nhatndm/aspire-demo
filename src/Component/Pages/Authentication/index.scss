@@ -7,7 +7,7 @@
 
   .authentication-page-wrapper {
     width: 400px;
-    height: 400px;
+    // height: 400px;
     background-color: var(--app-white);
     border: 1px solid var(--app-border-color-dark-white);
     border-radius: 5px;
@@ -29,12 +29,24 @@
         &.active {
           background-color: var(--app-strong-cyan);
           color: var(--app-white);
+
+          &.active-top-right {
+            border-top-right-radius: 4px;
+          }
+
+          &.active-top-left {
+            border-top-left-radius: 4px;
+          }
         }
 
         &:hover {
           cursor: pointer;
         }
       }
+    }
+
+    > .content {
+      padding: 20px;
     }
   }
 }

@@ -5,6 +5,7 @@ import "./index.scss";
 
 export default class AuthenticationComponent extends Component {
   render() {
+    const { path } = this.props;
     return (
       <div className="authentication-page">
         <div className="authentication-page-wrapper">
@@ -12,20 +13,25 @@ export default class AuthenticationComponent extends Component {
             <NavLink
               className="tab-item"
               to="/auth/login"
-              activeClassName="active"
+              activeClassName="active active-top-left"
+              isActive={match => {
+                return match || path === "/auth";
+              }}
             >
               sign in
             </NavLink>
             <NavLink
               className="tab-item"
               to="/auth/signup"
-              activeClassName="active"
+              activeClassName="active active-top-right"
             >
               register now
             </NavLink>
           </div>
 
-          <AuthenticationRoutes />
+          <div className="content">
+            <AuthenticationRoutes />
+          </div>
         </div>
       </div>
     );

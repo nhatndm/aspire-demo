@@ -3,6 +3,7 @@ import AuthenticationComponent from "../../../Component/Pages/Authentication";
 
 export default class AuthenticationContainer extends Component {
   render() {
-    return <AuthenticationComponent />;
+    const { location } = this.props;
+    return <AuthenticationComponent path={location.pathname} />;
   }
 }
