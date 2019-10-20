@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import InputGroup from "../../InputGroup";
 import Button from "../../Button";
+import { isEmail } from "validator";
 
 export default class signup extends Component {
   constructor(props) {
@@ -16,7 +17,13 @@ export default class signup extends Component {
   };
 
   handleClick = () => {
-    console.log(this.state);
+    const { email, password } = this.state;
+    const { handleSubmit } = this.props;
+    if (isEmail(email) && password.trim() !== "") {
+      return handleSubmit(this.state);
+    }
+
+    return alert("Check your information please");
   };
 
   render() {
