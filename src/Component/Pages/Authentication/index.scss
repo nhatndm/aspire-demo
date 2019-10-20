@@ -1,0 +1,40 @@
+.authentication-page {
+  height: 100vh;
+  background-color: var(--app-dark-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .authentication-page-wrapper {
+    width: 400px;
+    height: 400px;
+    background-color: var(--app-white);
+    border: 1px solid var(--app-border-color-dark-white);
+    border-radius: 5px;
+
+    .switch-tab {
+      height: 50px;
+      display: flex;
+
+      > .tab-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--app-strong-cyan);
+        flex: 1;
+        text-transform: uppercase;
+        font-weight: 500;
+        text-decoration: none;
+
+        &.active {
+          background-color: var(--app-strong-cyan);
+          color: var(--app-white);
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
