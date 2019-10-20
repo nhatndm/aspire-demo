@@ -1,5 +1,5 @@
-import { firebaseApp } from "../index";
-import { store } from "../index";
+import { firebaseApp } from "../Redux";
+import { store } from "../Redux";
 import { push } from "connected-react-router";
 import "firebase/auth";
 

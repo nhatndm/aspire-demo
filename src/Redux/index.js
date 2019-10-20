@@ -1,7 +1,6 @@
 import { init } from "@rematch/core";
 import { createBrowserHistory } from "history";
 import { connectRouter, routerMiddleware } from "connected-react-router";
-import firebase from "./Firebase";
 import app from "firebase/app";
 
 const config = {
@@ -17,9 +16,7 @@ const historyIns = createBrowserHistory();
 const firebaseIns = app.initializeApp(config);
 
 const storeIns = init({
-  models: {
-    firebase: firebase
-  },
+  models: {},
   redux: {
     devtoolOptions: {
       name: "aspire-demo",

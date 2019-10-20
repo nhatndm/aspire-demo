@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import LoginComponent from "../../../Component/Pages/Authentication/Login";
 import { connect } from "react-redux";
+import { loginWithEmailPassword } from "../../../Firebase";
 
 class LoginContainer extends Component {
   handleSubmit = async user => {
-    await this.props.loginWithEmailPassword(user);
+    await loginWithEmailPassword(user);
   };
 
   render() {
@@ -12,13 +13,7 @@ class LoginContainer extends Component {
   }
 }
 
-const mapDisPatchtoProps = ({ firebase: { loginWithEmailPassword } }) => {
-  return {
-    loginWithEmailPassword: user => loginWithEmailPassword(user)
-  };
-};
-
 export default connect(
   null,
-  mapDisPatchtoProps
+  null
 )(LoginContainer);
