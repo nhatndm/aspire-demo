@@ -35,3 +35,12 @@ export async function loginWithEmailPassword({ email, password }) {
     return alert("Please do that again");
   }
 }
+
+const fakeApiCall = () =>
+  new Promise(resolve =>
+    setTimeout(() => resolve({ isAuthenticated: false }), 5000)
+  );
+
+export async function verifyIdToken() {
+  return await fakeApiCall();
+}

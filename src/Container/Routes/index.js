@@ -1,5 +1,6 @@
 import React from "react";
 import Authentication from "../Pages/Authentication";
+import Home from "../Pages/Home";
 import Login from "../Pages/Authentication/Login";
 import SignupContainer from "../Pages/Authentication/Signup";
 import { Routes } from "../../Component/Routes";
@@ -11,7 +12,15 @@ export const AppRoutes = () => {
       id: "authentication",
       exact: false,
       path: "/auth",
-      component: Authentication
+      component: Authentication,
+      needAuthentication: false
+    },
+    {
+      id: "home",
+      exact: true,
+      path: "/",
+      component: Home,
+      needAuthentication: true
     }
   ];
 
@@ -28,19 +37,22 @@ export const AuthenticationRoutes = () => {
       id: "authentication-home",
       exact: true,
       path: "/auth",
-      component: Login
+      component: Login,
+      needAuthentication: false
     },
     {
       id: "login",
       exact: false,
       path: "/auth/login",
-      component: Login
+      component: Login,
+      needAuthentication: false
     },
     {
       id: "signup",
       exact: false,
       path: "/auth/signup",
-      component: SignupContainer
+      component: SignupContainer,
+      needAuthentication: false
     }
   ];
 
