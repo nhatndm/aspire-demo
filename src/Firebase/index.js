@@ -1,5 +1,4 @@
-import { firebaseApp } from "../Redux";
-import { store } from "../Redux";
+import { store, firebaseApp } from "../Redux";
 import { push } from "connected-react-router";
 import "firebase/auth";
 
@@ -35,8 +34,4 @@ export async function loginWithEmailPassword({ email, password }) {
   } catch (error) {
     return alert("Please do that again");
   }
-}
-
-export async function verifyIdToken(idToken) {
-  firebaseApp.auth().ve;
 }
