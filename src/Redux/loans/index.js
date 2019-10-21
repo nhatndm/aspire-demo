@@ -1,14 +1,20 @@
-import { saveLoans, fetchLoansApi, fetchLoanDetailApi } from "./action";
+import {
+  saveLoans,
+  fetchLoansApi,
+  fetchLoanDetailApi,
+  loanRePayment
+} from "./action";
 
 export default {
   state: {
-    loans: []
+    data: []
   },
   reducers: {
     saveLoans
   },
   effects: {
     fetchLoansApi,
-    fetchLoanDetailApi
+    fetchLoanDetailApi,
+    loanRePayment
   }
 };

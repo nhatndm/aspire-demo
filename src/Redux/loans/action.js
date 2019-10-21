@@ -1,11 +1,12 @@
 import { store } from "../";
 import { push } from "connected-react-router";
 import axios from "axios";
+import { find } from "lodash";
 
-export function saveLoans(state, { loans }) {
+export function saveLoans(state, { data }) {
   return {
     ...state,
-    loans: loans
+    data: data
   };
 }
 
@@ -26,7 +27,7 @@ export async function fetchLoansApi() {
 
   const loans = data.data.loans;
 
-  return this.saveLoans(loans);
+  return this.saveLoans({ data: loans });
 }
 
 export async function fetchLoanDetailApi(id) {
@@ -46,10 +47,10 @@ export async function fetchLoanDetailApi(id) {
 
   const loans = data.data.loans;
 
-  return this.saveLoans(loans);
+  return this.saveLoans({ data: loans });
 }
 
-export async function loanRePayment({ id, body }) {
+export async function loanRePayment({ id, body }, rootState) {
   const authuser = JSON.parse(localStorage.getItem("authuser"));
 
   if (!authuser || Object.keys(authuser).length === 0 || !authuser.idToken) {
@@ -57,7 +58,7 @@ export async function loanRePayment({ id, body }) {
   }
 
   const loan = await axios({
-    url: `${process.env.REACT_APP_BACKEND_API}/loans/${id}`,
+    url: `${process.env.REACT_APP_BACKEND_API}/loans/repayment/${id}`,
     method: "PUT",
     data: body,
     headers: {
@@ -65,15 +66,11 @@ export async function loanRePayment({ id, body }) {
     }
   });
 
-  const data = await axios({
-    url: `${process.env.REACT_APP_BACKEND_API}/loans/${loan.loanId}`,
-    method: "GET",
-    headers: {
-      "id-token": authuser.idToken
-    }
-  });
+  const loansRootState = rootState.loans;
 
-  const loans = data.data.loans;
+  const loanFound = find(loansRootState, v => v._id === loan._id);
 
-  return this.saveLoans(loans);
+  loanFound.status = loan.status;
+
+  return this.saveLoans({ data: loansRootState });
 }

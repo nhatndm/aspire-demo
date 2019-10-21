@@ -46,21 +46,21 @@ export async function verifyIdToken() {
     };
   }
 
-  const data = await axios({
-    url: `${process.env.REACT_APP_BACKEND_API}/auth/verify`,
-    method: "GET",
-    headers: {
-      "id-token": authuser.idToken
-    }
-  });
+  try {
+    await axios({
+      url: `${process.env.REACT_APP_BACKEND_API}/auth/verify`,
+      method: "GET",
+      headers: {
+        "id-token": authuser.idToken
+      }
+    });
 
-  if (data.status === "401") {
+    return {
+      isAuthenticated: true
+    };
+  } catch (error) {
     return {
       isAuthenticated: false
     };
   }
-
-  return {
-    isAuthenticated: true
-  };
 }

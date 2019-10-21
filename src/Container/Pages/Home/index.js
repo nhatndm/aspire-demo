@@ -1,8 +1,40 @@
 import React, { Component } from "react";
 import HomeComponent from "../../../Component/Pages/Home";
+import { connect } from "react-redux";
 
-export default class HomeContainer extends Component {
+class HomeContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(id) {
+    return this.props.history.push(`/${id}`);
+  }
+
+  componentDidMount() {
+    this.props.fetchLoansApi();
+  }
+
   render() {
-    return <HomeComponent />;
+    const { loans } = this.props;
+    return <HomeComponent datasource={loans} handleClick={this.handleClick} />;
   }
 }
+
+const mapStateToProps = rootState => {
+  return {
+    loans: rootState.loans.data
+  };
+};
+
+const mapDispatchToProps = ({ loans: { fetchLoansApi } }) => {
+  return {
+    fetchLoansApi: () => fetchLoansApi()
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeContainer);

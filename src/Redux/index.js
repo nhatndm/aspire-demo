@@ -2,6 +2,7 @@ import { init } from "@rematch/core";
 import { createBrowserHistory } from "history";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import app from "firebase/app";
+import loans from "./loans";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,7 +17,9 @@ const historyIns = createBrowserHistory();
 const firebaseIns = app.initializeApp(config);
 
 const storeIns = init({
-  models: {},
+  models: {
+    loans: loans
+  },
   redux: {
     devtoolOptions: {
       name: "aspire-demo",

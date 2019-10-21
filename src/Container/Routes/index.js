@@ -1,6 +1,7 @@
 import React from "react";
 import Authentication from "../Pages/Authentication";
 import Home from "../Pages/Home";
+import LoansDetail from "../Pages/LoanDetail";
 import Login from "../Pages/Authentication/Login";
 import SignupContainer from "../Pages/Authentication/Signup";
 import { Routes } from "../../Component/Routes";
@@ -20,6 +21,13 @@ export const AppRoutes = () => {
       exact: true,
       path: "/",
       component: Home,
+      needAuthentication: true
+    },
+    {
+      id: "loans-detail",
+      exact: false,
+      path: "/:id",
+      component: LoansDetail,
       needAuthentication: true
     }
   ];

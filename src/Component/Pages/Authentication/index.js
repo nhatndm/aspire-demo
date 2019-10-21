@@ -29,7 +29,7 @@ export default class AuthenticationComponent extends Component {
             </NavLink>
           </div>
 
-          <div className="content">
+          <div className="authentiation-content">
             <AuthenticationRoutes />
           </div>
         </div>
