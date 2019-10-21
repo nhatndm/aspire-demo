@@ -61,6 +61,8 @@ export async function fetchLoanDetailApi(id) {
   });
 
   const loans = data.data.loans;
+  const client = data.data.client;
+  this.saveClient({ client: client });
 
   return this.saveLoans({ data: loans });
 }

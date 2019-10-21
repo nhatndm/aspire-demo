@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import "./index.scss";
 import { HomeTable } from "../../Table";
 
-export default class Home extends Component {
+export default class HomeComponent extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick({ itemId, clientName }) {
-    return this.props.handleClick({ itemId, clientName });
+  handleClick({ itemId }) {
+    return this.props.handleClick({ itemId });
   }
 
   render() {

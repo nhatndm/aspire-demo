@@ -8,9 +8,8 @@ class HomeContainer extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick({ itemId, clientName }) {
-    const { history, saveClient } = this.props;
-    saveClient({ client: clientName });
+  handleClick({ itemId }) {
+    const { history } = this.props;
     return history.push(`/loans/${itemId}`);
   }
 
@@ -30,10 +29,9 @@ const mapStateToProps = rootState => {
   };
 };
 
-const mapDispatchToProps = ({ loans: { fetchLoansApi, saveClient } }) => {
+const mapDispatchToProps = ({ loans: { fetchLoansApi } }) => {
   return {
-    fetchLoansApi: () => fetchLoansApi(),
-    saveClient: data => saveClient(data)
+    fetchLoansApi: () => fetchLoansApi()
   };
 };
 
