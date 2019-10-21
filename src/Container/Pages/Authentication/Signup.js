@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SignUpComponent from "Component/Pages/Authentication/Signup";
+import SignUpComponent from "../../../Component/Pages/Authentication/Signup";
 import { connect } from "react-redux";
-import { createUserWithEmailPassword } from "FirebaseIns";
+import { createUserWithEmailPassword } from "../../../FirebaseIns";
 
 class SignupContainer extends Component {
   handleSubmit = async user => {

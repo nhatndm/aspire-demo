@@ -1,10 +1,10 @@
 import React from "react";
-import Authentication from "Container/Pages/Authentication";
-import Home from "Container/Pages/Home";
-import LoansDetail from "Container/Pages/LoanDetail";
-import Login from "Container/Pages/Authentication/Login";
-import SignupContainer from "Container/Pages/Authentication/Signup";
-import { Routes } from "Component/Routes";
+import Authentication from "../Pages/Authentication";
+import Home from "../Pages/Home";
+import LoansDetail from "../Pages/LoanDetail";
+import Login from "../Pages/Authentication/Login";
+import SignupContainer from "../Pages/Authentication/Signup";
+import { Routes } from "../../Component/Routes";
 import { Switch } from "react-router-dom";
 
 export const AppRoutes = () => {

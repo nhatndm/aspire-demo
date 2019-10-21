@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import { verifyIdToken } from "FirebaseIns";
+import { verifyIdToken } from "../../FirebaseIns";
 
 const CheckingStatus = {
   PENDING: "PENDING",

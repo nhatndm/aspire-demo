@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./index.scss";
-import { LoansTable } from "Component/Table";
-import { ErrorLabel } from "Component/Error";
+import { LoansTable } from "../../Table";
+import { ErrorLabel } from "../../Error";
 
 export default class LoanDetailComponent extends Component {
   constructor(props) {

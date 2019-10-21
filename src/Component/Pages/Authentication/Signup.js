@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import InputGroup from "Component/InputGroup";
-import Button from "Component/Button";
+import InputGroup from "../../InputGroup";
+import Button from "../../Button";
 import { isEmail } from "validator";
 
 export default class signup extends Component {
