@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import LoanDetailComponent from "../../../Component/Pages/LoanDetail";
+import LoanDetailComponent from "Component/Pages/LoanDetail";
 import { connect } from "react-redux";
 
 class LoanDetailContainer extends Component {

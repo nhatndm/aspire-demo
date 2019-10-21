@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import HomeComponent from "../../../Component/Pages/Home";
+import HomeComponent from "Component/Pages/Home";
 import { connect } from "react-redux";
 
 class HomeContainer extends Component {

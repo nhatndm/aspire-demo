@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./index.scss";
-import { HomeTable } from "../../Table";
+import { HomeTable } from "Component/Table";
 
 export default class HomeComponent extends Component {
   constructor(props) {

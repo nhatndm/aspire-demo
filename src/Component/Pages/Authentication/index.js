@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthenticationRoutes } from "../../../Container/Routes";
+import { AuthenticationRoutes } from "Container/Routes";
 import "./index.scss";
 
 export default class AuthenticationComponent extends Component {
