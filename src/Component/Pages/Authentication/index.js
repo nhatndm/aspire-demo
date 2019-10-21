@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { AuthenticationRoutes } from "../../../Container/Routes";
 import "./index.scss";
 
 export default class AuthenticationComponent extends Component {
   render() {
-    const { path } = this.props;
+    const { path, children } = this.props;
     return (
       <div className="authentication-page">
         <div className="authentication-page-wrapper">
@@ -29,9 +28,7 @@ export default class AuthenticationComponent extends Component {
             </NavLink>
           </div>
 
-          <div className="authentiation-content">
-            <AuthenticationRoutes />
-          </div>
+          <div className="authentiation-content">{children}</div>
         </div>
       </div>
     );
