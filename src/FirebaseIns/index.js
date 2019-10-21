@@ -9,6 +9,7 @@ export async function createUserWithEmailPassword({ email, password }) {
     await firebaseApp.auth().currentUser.sendEmailVerification({
       url: process.env.REACT_APP_CONFIRMATION_EMAIL_REDIRECT
     });
+    return alert("Verification link has been sent, Please check your email.");
   } catch (error) {
     return alert("Please do that again");
   }
