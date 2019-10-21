@@ -9,7 +9,7 @@ class HomeContainer extends Component {
   }
 
   handleClick(id) {
-    return this.props.history.push(`/${id}`);
+    return this.props.history.push(`/loans/${id}`);
   }
 
   componentDidMount() {

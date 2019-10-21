@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 
 export const HomeTable = ({
@@ -57,37 +57,95 @@ export const HomeTable = ({
   );
 };
 
-export const LoansTable = ({ tabelLabel, tableValue, tableKeyBody }) => {
+export const LoansTable = ({
+  tabelLabel,
+  tableValue,
+  tableKeyBody,
+  onClick
+}) => {
+  const [amount, setAmount] = useState(0);
+
+  const handleClick = itemId => e => {
+    onClick({ itemId: itemId, amount: amount });
+  };
+
+  const handleChangeAmount = value => {
+    setAmount(value);
+  };
+
   return (
     <table className="table tablecom table-hover">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th className="text-center" scope="col">
+            #
+          </th>
           {tabelLabel.map((v, i) => (
-            <th key={`head-${i}`} scope="col">
+            <th className="text-center" key={`head-${i}`} scope="col">
               {v}
             </th>
           ))}
-          <th scope="col">Amount</th>
-          <th scope="col">Action</th>
+          <th className="text-center" scope="col">
+            Amount
+          </th>
+          <th className="text-center" scope="col">
+            Action
+          </th>
         </tr>
       </thead>
       <tbody>
         {tableValue.map((v, i) => (
           <tr key={`body-${i}`}>
-            <th className="row">{i + 1}</th>
+            <th className="row">
+              <div>{i + 1}</div>
+            </th>
             {tableKeyBody.map((tableKey, i) => (
-              <td key={`body-row-${i}`}>{v[tableKey]}</td>
+              <td key={`body-row-${i}`}>
+                <div>
+                  {tableKey === "status" ? (
+                    v[tableKey] === "UNPAID" ? (
+                      <span className="badge badge-warning">{v[tableKey]}</span>
+                    ) : (
+                      <span className="badge badge-success">{v[tableKey]}</span>
+                    )
+                  ) : (
+                    v[tableKey]
+                  )}
+                </div>
+              </td>
             ))}
             <td>
-              <input />
+              <InputAmount onChange={handleChangeAmount} />
             </td>
             <td>
-              <button>Click</button>
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-outline-success"
+                  onClick={handleClick(v._id)}
+                >
+                  Repay
+                </button>
+              </div>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+  );
+};
+
+const InputAmount = ({ onChange }) => {
+  const [amount, setAmount] = useState(0);
+
+  function handleChangeAmount(e) {
+    setAmount(e.target.value);
+    onChange(e.target.value);
+  }
+
+  return (
+    <div>
+      <input type="number" value={amount} onChange={handleChangeAmount} />
+    </div>
   );
 };

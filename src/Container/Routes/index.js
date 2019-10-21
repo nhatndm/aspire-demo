@@ -24,9 +24,16 @@ export const AppRoutes = () => {
       needAuthentication: true
     },
     {
+      id: "loans",
+      exact: true,
+      path: "/loans",
+      component: Home,
+      needAuthentication: true
+    },
+    {
       id: "loans-detail",
       exact: false,
-      path: "/:id",
+      path: "/loans/:id",
       component: LoansDetail,
       needAuthentication: true
     }
