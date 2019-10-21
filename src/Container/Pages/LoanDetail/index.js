@@ -9,7 +9,12 @@ class LoanDetailContainer extends Component {
   }
 
   handleClick(object) {
-    console.log(object);
+    this.props.loanRePayment({
+      id: object.itemId,
+      body: {
+        cost: object.amount
+      }
+    });
   }
 
   componentDidMount() {
@@ -31,9 +36,12 @@ const mapStateToProps = rootState => {
   };
 };
 
-const mapDispatchToProps = ({ loans: { fetchLoanDetailApi } }) => {
+const mapDispatchToProps = ({
+  loans: { fetchLoanDetailApi, loanRePayment }
+}) => {
   return {
-    fetchLoanDetailApi: id => fetchLoanDetailApi(id)
+    fetchLoanDetailApi: id => fetchLoanDetailApi(id),
+    loanRePayment: data => loanRePayment(data)
   };
 };
 

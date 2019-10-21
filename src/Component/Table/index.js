@@ -115,11 +115,15 @@ export const LoansTable = ({
               </td>
             ))}
             <td>
-              <InputAmount onChange={handleChangeAmount} />
+              <InputAmount
+                onChange={handleChangeAmount}
+                isPaid={v.status === "PAID"}
+              />
             </td>
             <td>
               <div>
                 <button
+                  disabled={v.status === "PAID"}
                   type="button"
                   className="btn btn-outline-success"
                   onClick={handleClick(v._id)}
@@ -135,7 +139,7 @@ export const LoansTable = ({
   );
 };
 
-const InputAmount = ({ onChange }) => {
+const InputAmount = ({ onChange, isPaid }) => {
   const [amount, setAmount] = useState(0);
 
   function handleChangeAmount(e) {
@@ -145,7 +149,11 @@ const InputAmount = ({ onChange }) => {
 
   return (
     <div>
-      <input type="number" value={amount} onChange={handleChangeAmount} />
+      {isPaid ? (
+        "PAID"
+      ) : (
+        <input type="number" value={amount} onChange={handleChangeAmount} />
+      )}
     </div>
   );
 };

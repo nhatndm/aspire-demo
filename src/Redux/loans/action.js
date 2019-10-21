@@ -57,8 +57,8 @@ export async function loanRePayment({ id, body }, rootState) {
     return store.dispatch(push("/auth/login"));
   }
 
-  const loan = await axios({
-    url: `${process.env.REACT_APP_BACKEND_API}/loans/repayment/${id}`,
+  const loanDetail = await axios({
+    url: `${process.env.REACT_APP_BACKEND_API}/loans/${id}/repayment`,
     method: "PUT",
     data: body,
     headers: {
@@ -66,11 +66,15 @@ export async function loanRePayment({ id, body }, rootState) {
     }
   });
 
-  const loansRootState = rootState.loans;
+  const data = await axios({
+    url: `${process.env.REACT_APP_BACKEND_API}/loans/${loanDetail.data.loan.loanId}`,
+    method: "GET",
+    headers: {
+      "id-token": authuser.idToken
+    }
+  });
 
-  const loanFound = find(loansRootState, v => v._id === loan._id);
+  const loans = data.data.loans;
 
-  loanFound.status = loan.status;
-
-  return this.saveLoans({ data: loansRootState });
+  return this.saveLoans({ data: loans });
 }
