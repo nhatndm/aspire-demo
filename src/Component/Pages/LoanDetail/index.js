@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./index.scss";
 import { LoansTable } from "../../Table";
+import { ErrorLabel } from "../../Error";
 
 export default class LoanDetailComponent extends Component {
   constructor(props) {
@@ -13,9 +14,11 @@ export default class LoanDetailComponent extends Component {
   }
 
   render() {
-    const { datasource } = this.props;
+    const { datasource, error, client } = this.props;
     return (
       <div className="container loan-detail">
+        <h3>Client: {client}</h3>
+        <ErrorLabel mess={error} />
         <LoansTable
           tabelLabel={[
             "Pricipal",

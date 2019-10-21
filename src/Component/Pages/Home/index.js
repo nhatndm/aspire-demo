@@ -8,8 +8,8 @@ export default class Home extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(id) {
-    return this.props.handleClick(id);
+  handleClick({ itemId, clientName }) {
+    return this.props.handleClick({ itemId, clientName });
   }
 
   render() {

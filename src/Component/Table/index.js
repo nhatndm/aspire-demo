@@ -7,8 +7,8 @@ export const HomeTable = ({
   tableKeyBody,
   onClick
 }) => {
-  const handleClick = itemId => e => {
-    onClick(itemId);
+  const handleClick = (itemId, clientName) => e => {
+    onClick({ itemId: itemId, clientName: clientName });
   };
 
   return (
@@ -44,7 +44,7 @@ export const HomeTable = ({
                 <button
                   type="button"
                   className="btn btn-outline-success"
-                  onClick={handleClick(v._id)}
+                  onClick={handleClick(v._id, v.client)}
                 >
                   View
                 </button>

@@ -1,5 +1,7 @@
 import {
   saveLoans,
+  saveClient,
+  saveError,
   fetchLoansApi,
   fetchLoanDetailApi,
   loanRePayment
@@ -7,10 +9,14 @@ import {
 
 export default {
   state: {
-    data: []
+    data: [],
+    error: "",
+    client: ""
   },
   reducers: {
-    saveLoans
+    saveLoans,
+    saveClient,
+    saveError
   },
   effects: {
     fetchLoansApi,
