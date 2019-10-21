@@ -36,7 +36,11 @@ export const HomeTable = ({
             </th>
             {tableKeyBody.map((tableKey, i) => (
               <td key={`body-row-${i}`}>
-                <div>{v[tableKey]}</div>
+                <div>
+                  {tableKey === "amount"
+                    ? Number(v[tableKey]).toLocaleString()
+                    : v[tableKey]}
+                </div>
               </td>
             ))}
             <td>
@@ -55,6 +59,22 @@ export const HomeTable = ({
       </tbody>
     </table>
   );
+};
+
+const checkKey = (item, tableKey) => {
+  if (tableKey === "status" && item[tableKey] === "UNPAID") {
+    return <span className="badge badge-warning">{item[tableKey]}</span>;
+  }
+
+  if (tableKey === "status" && item[tableKey] === "PAID") {
+    return <span className="badge badge-success">{item[tableKey]}</span>;
+  }
+
+  if (tableKey === "principal" || tableKey === "interestPayment") {
+    return Number(item[tableKey]).toLocaleString();
+  }
+
+  return item[tableKey];
 };
 
 export const LoansTable = ({
@@ -101,17 +121,7 @@ export const LoansTable = ({
             </th>
             {tableKeyBody.map((tableKey, i) => (
               <td key={`body-row-${i}`}>
-                <div>
-                  {tableKey === "status" ? (
-                    v[tableKey] === "UNPAID" ? (
-                      <span className="badge badge-warning">{v[tableKey]}</span>
-                    ) : (
-                      <span className="badge badge-success">{v[tableKey]}</span>
-                    )
-                  ) : (
-                    v[tableKey]
-                  )}
-                </div>
+                <div>{checkKey(v, tableKey)}</div>
               </td>
             ))}
             <td>

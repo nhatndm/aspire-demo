@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import { verifyIdToken } from "../../FirebaseIns";
+import Loading from "../../Component/Loading";
 
 const CheckingStatus = {
   PENDING: "PENDING",
@@ -31,7 +32,7 @@ const withAuthentication = (Comp, needAuthentication) => {
       }
 
       if (this.state.checkingApiStatus === CheckingStatus.PENDING) {
-        return <div>Loading....</div>;
+        return <Loading />;
       }
 
       return <Comp {...this.props} />;
